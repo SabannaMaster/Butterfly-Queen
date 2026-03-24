@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Living Animated</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  scroll-behavior: smooth;
+  background: #0f0f0f;
+  color: white;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  padding: 15px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #00f7ff;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url("https://picsum.photos/1600/900?blur=2") center/cover fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 60px;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeUp 1s forwards;
+}
+
+.hero p {
+  margin: 20px 0;
+  opacity: 0;
+  animation: fadeUp 1s forwards 0.5s;
+}
+
+.btn {
+  padding: 12px 25px;
+  background: #00f7ff;
+  border: none;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+  transition: 0.3s;
+  opacity: 0;
+  animation: fadeUp 1s forwards 1s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+/* SECTIONS */
+section {
+  padding: 100px 50px;
+  text-align: center;
+}
+
+/* SERVICES */
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.service-box {
+  width: 260px;
+  margin: 20px;
+  padding: 25px;
+  background: #1a1a1a;
+  border-radius: 10px;
+  transition: 0.4s;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.service-box:hover {
+  transform: translateY(-10px) scale(1.05);
+  background: #00f7ff;
+  color: black;
+}
+
+/* PROJECTS */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.project {
+  height: 220px;
+  background: url("https://picsum.photos/400/300") center/cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.project::after {
+  content: "View";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.project:hover::after {
+  opacity: 1;
+}
+
+/* CONTACT */
+.contact input, .contact textarea {
+  width: 70%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 1s;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+footer {
+  background: black;
+  padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="home" class="hero">
+  <div>
+    <h1>Smart Living</h1>
+    <p>Future of Modern Homes</p>
+    <button class="btn">Get Started</button>
+  </div>
+</section>
+
+<section id="services">
+  <h2 class="reveal">Our Services</h2>
+  <div class="services">
+    <div class="service-box reveal">Design</div>
+    <div class="service-box reveal">Development</div>
+    <div class="service-box reveal">Automation</div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="reveal">Projects</h2>
+  <div class="projects">
+    <div class="project reveal"></div>
+    <div class="project reveal"></div>
+    <div class="project reveal"></div>
+    <div class="project reveal"></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2 class="reveal">Contact</h2>
+  <input type="text" placeholder="Name" class="reveal"><br>
+  <input type="email" placeholder="Email" class="reveal"><br>
+  <textarea placeholder="Message" class="reveal"></textarea><br>
+  <button class="btn reveal">Send</button>
+</section>
+
+<footer>
+  <p>© 2026 Smart Living</p>
+</footer>
+
+<script>
+window.addEventListener("scroll", () => {
+  let reveals = document.querySelectorAll(".reveal");
+
+  reveals.forEach(el => {
+    let windowHeight = window.innerHeight;
+    let elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      el.classList.add("active");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
