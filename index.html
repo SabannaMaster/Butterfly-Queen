@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Living Animated</title>
+<title>Smart Living | Premium Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
+/* --- RESET & BASE --- */
 * {
   margin: 0;
   padding: 0;
@@ -17,17 +18,19 @@
 
 body {
   scroll-behavior: smooth;
-  background: #0f0f0f;
-  color: white;
+  background: #0a0a0a; /* Deeper black */
+  color: #e0e0e0;
+  overflow-x: hidden;
 }
 
-/* NAV */
+/* --- NAV --- */
 nav {
   position: fixed;
   width: 100%;
-  padding: 15px;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
+  padding: 20px;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1000;
 }
 
@@ -38,23 +41,27 @@ nav ul {
 }
 
 nav ul li {
-  margin: 0 20px;
+  margin: 0 25px;
 }
 
 nav ul li a {
   color: white;
   text-decoration: none;
-  transition: 0.3s;
+  font-weight: 300;
+  letter-spacing: 1px;
+  transition: 0.4s;
 }
 
 nav ul li a:hover {
   color: #00f7ff;
+  text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
 }
 
-/* HERO */
+/* --- HERO --- */
 .hero {
   height: 100vh;
-  background: url("https://picsum.photos/1600/900?blur=2") center/cover fixed;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+              url("https://picsum.photos/1600/900?grayscale") center/cover fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,104 +69,151 @@ nav ul li a:hover {
 }
 
 .hero h1 {
-  font-size: 60px;
+  font-size: clamp(40px, 8vw, 80px); /* Responsive font size */
+  font-weight: 600;
+  letter-spacing: -2px;
+  background: linear-gradient(to right, #00f7ff, #7000ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   opacity: 0;
   transform: translateY(50px);
   animation: fadeUp 1s forwards;
 }
 
 .hero p {
-  margin: 20px 0;
+  margin: 15px 0 30px;
+  font-size: 1.2rem;
+  color: #bbb;
   opacity: 0;
   animation: fadeUp 1s forwards 0.5s;
 }
 
 .btn {
-  padding: 12px 25px;
-  background: #00f7ff;
+  padding: 15px 40px;
+  background: linear-gradient(45deg, #00f7ff, #7000ff);
   border: none;
+  border-radius: 50px;
   cursor: pointer;
-  color: black;
+  color: white;
   font-weight: bold;
-  transition: 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.4s;
   opacity: 0;
   animation: fadeUp 1s forwards 1s;
+  box-shadow: 0 10px 20px rgba(0, 247, 255, 0.2);
 }
 
 .btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  box-shadow: 0 15px 30px rgba(112, 0, 255, 0.4);
 }
 
-/* SECTIONS */
+/* --- SECTIONS --- */
 section {
-  padding: 100px 50px;
+  padding: 120px 10%;
   text-align: center;
 }
 
-/* SERVICES */
+section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+section h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: #00f7ff;
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+/* --- SERVICES --- */
 .services {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 30px;
 }
 
 .service-box {
-  width: 260px;
-  margin: 20px;
-  padding: 25px;
-  background: #1a1a1a;
-  border-radius: 10px;
-  transition: 0.4s;
-  opacity: 0;
-  transform: translateY(40px);
+  width: 300px;
+  padding: 40px 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .service-box:hover {
-  transform: translateY(-10px) scale(1.05);
-  background: #00f7ff;
-  color: black;
+  transform: translateY(-15px);
+  background: rgba(0, 247, 255, 0.1);
+  border-color: #00f7ff;
 }
 
-/* PROJECTS */
+/* --- PROJECTS --- */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 
 .project {
-  height: 220px;
-  background: url("https://picsum.photos/400/300") center/cover;
+  height: 250px;
+  border-radius: 15px;
+  background: url("https://picsum.photos/400/300?random=1") center/cover;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 .project::after {
-  content: "View";
+  content: "View Project";
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
   transition: 0.4s;
+  font-weight: 600;
+  color: #00f7ff;
 }
 
 .project:hover::after {
   opacity: 1;
 }
 
-/* CONTACT */
-.contact input, .contact textarea {
-  width: 70%;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
+/* --- CONTACT --- */
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-/* ANIMATIONS */
+.contact input, .contact textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: white;
+  transition: 0.3s;
+}
+
+.contact input:focus, .contact textarea:focus {
+  outline: none;
+  border-color: #00f7ff;
+  background: #222;
+}
+
+.contact textarea { height: 150px; }
+
+/* --- ANIMATIONS --- */
 @keyframes fadeUp {
   to {
     opacity: 1;
@@ -169,8 +223,8 @@ section {
 
 .reveal {
   opacity: 0;
-  transform: translateY(50px);
-  transition: 1s;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
 }
 
 .reveal.active {
@@ -179,8 +233,11 @@ section {
 }
 
 footer {
-  background: black;
-  padding: 20px;
+  background: #050505;
+  padding: 40px;
+  border-top: 1px solid #1a1a1a;
+  color: #555;
+  font-size: 0.9rem;
 }
 </style>
 </head>
@@ -199,40 +256,51 @@ footer {
 <section id="home" class="hero">
   <div>
     <h1>Smart Living</h1>
-    <p>Future of Modern Homes</p>
-    <button class="btn">Get Started</button>
+    <p>Designing the Future of Modern Environments</p>
+    <button class="btn">Explore Now</button>
   </div>
 </section>
 
 <section id="services">
-  <h2 class="reveal">Our Services</h2>
+  <h2 class="reveal">Expertise</h2>
   <div class="services">
-    <div class="service-box reveal">Design</div>
-    <div class="service-box reveal">Development</div>
-    <div class="service-box reveal">Automation</div>
+    <div class="service-box reveal">
+        <h3>Design</h3>
+        <p style="font-size: 0.9rem; margin-top: 10px; color: #888;">Crafting beautiful, intuitive interfaces.</p>
+    </div>
+    <div class="service-box reveal">
+        <h3>Development</h3>
+        <p style="font-size: 0.9rem; margin-top: 10px; color: #888;">Building robust and scalable solutions.</p>
+    </div>
+    <div class="service-box reveal">
+        <h3>Automation</h3>
+        <p style="font-size: 0.9rem; margin-top: 10px; color: #888;">Seamlessly integrating smart technology.</p>
+    </div>
   </div>
 </section>
 
 <section id="projects">
-  <h2 class="reveal">Projects</h2>
+  <h2 class="reveal">Featured Work</h2>
   <div class="projects">
-    <div class="project reveal"></div>
-    <div class="project reveal"></div>
-    <div class="project reveal"></div>
-    <div class="project reveal"></div>
+    <div class="project reveal" style="background-image: url('https://picsum.photos/400/300?random=2');"></div>
+    <div class="project reveal" style="background-image: url('https://picsum.photos/400/300?random=3');"></div>
+    <div class="project reveal" style="background-image: url('https://picsum.photos/400/300?random=4');"></div>
+    <div class="project reveal" style="background-image: url('https://picsum.photos/400/300?random=5');"></div>
   </div>
 </section>
 
 <section id="contact" class="contact">
-  <h2 class="reveal">Contact</h2>
-  <input type="text" placeholder="Name" class="reveal"><br>
-  <input type="email" placeholder="Email" class="reveal"><br>
-  <textarea placeholder="Message" class="reveal"></textarea><br>
-  <button class="btn reveal">Send</button>
+  <h2 class="reveal">Get In Touch</h2>
+  <div class="contact-container">
+      <input type="text" placeholder="Your Name" class="reveal">
+      <input type="email" placeholder="Your Email" class="reveal">
+      <textarea placeholder="Tell me about your project..." class="reveal"></textarea>
+      <button class="btn reveal">Send Message</button>
+  </div>
 </section>
 
 <footer>
-  <p>© 2026 Smart Living</p>
+  <p>© 2026 Smart Living Portfolio. Built with passion.</p>
 </footer>
 
 <script>
@@ -242,13 +310,18 @@ window.addEventListener("scroll", () => {
   reveals.forEach(el => {
     let windowHeight = window.innerHeight;
     let elementTop = el.getBoundingClientRect().top;
+    let elementVisible = 100;
 
-    if (elementTop < windowHeight - 100) {
+    if (elementTop < windowHeight - elementVisible) {
       el.classList.add("active");
     }
   });
 });
+
+// Trigger once on load for elements already in view
+window.dispatchEvent(new Event('scroll'));
 </script>
 
 </body>
 </html>
+
